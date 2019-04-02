@@ -1,0 +1,44 @@
+---
+title: "The Effect of Life Expectancy on Population Over Time"
+author: "Nabeel Hashmi"
+date: "4/2/2019"
+output: html_document
+bibliography: "library.bib"
+bibliography: "../outputs/library.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(here)
+library(tidyverse)
+library(pander)
+library(stargazer)
+library(beepr)
+```
+```{R }
+# Read in the data
+
+d <- readr::read_csv(here("data/gapminder/raw/gapminder_data.csv"))
+```
+
+## Introduction
+
+## Data
+
+The data consist of `r length(unique(d$country))` unique countries tracked from `r range(d$year)[1]` to `r range(d$year)[2]`. Table 1 presents a summary of the variables.
+
+```{r}
+pander(summary(d))
+```
+
+```{r}
+d2 <- d %>%
+  group_by(country) %>%
+  summarize(pop = mean(pop),
+            lifeExp = mean(lifeExp_bycountry))
+
+pander(d2)
+```
+
+
+
