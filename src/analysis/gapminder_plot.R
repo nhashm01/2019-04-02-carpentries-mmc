@@ -1,6 +1,8 @@
 library(here)
 library(tidyverse)   
 library(ggplot2)
+install.packages("skimr")
+library(skimr)
 
 gapminder <- readr::read_csv(here("data/gapminder/raw/gapminder_data.csv"))
 
@@ -42,3 +44,30 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp, color = continent)) +
 
 
 
+str(gapminder)
+skimr::skim(gapminder)
+
+
+gap_wide <- read.csv("data/gapminder_wide.csv", stringsAsFactors = FALSE)
+str(gap_wide)
+
+
+gap_long <- gap_wide %>%
+  gather(obstype_year, obs_values, starts_with('pop'),
+         starts_with('lifeExp'), starts_with('gdpPercap'))
+str(gap_long)
+
+# Create gap_wide
+gap_wide <- gapminder %>%
+  gather(key = 'key', value = 'value', c('pop', 'lifeExp', 'gdpPercap')) %>%
+  mutate(year_var = paste(key, year, sep = '_')) %>%
+  select(country, continent, year_var, value) %>%
+  spread(key = 'year_var', value = 'value')
+
+gap_long <- gap_wide %>%
+  gather(obstype_year, obs_values, starts_with('pop'),
+         starts_with('lifeExp'), starts_with('gdpPercap'))
+
+
+gap_long <- gap_wide %>% gather(obstype_year,obs_values,-continent,-country)
+str(gap_long)
