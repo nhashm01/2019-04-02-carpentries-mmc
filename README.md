@@ -17,14 +17,14 @@ Status](https://coveralls.io/repos/github/%3Cusername%3E/%3CPROJECT%20NAME%3E/ba
 
 ## Author
 
-<your name> (<user email>)
+Nabeel Hashmi (hashmin0@gmail.com)
 
 ## Contents
 
-This is the github repository for our paper titled <PAPER TITLE>. Please
+This is the github repository for our paper titled <Therapeutic Hypothermia in Newborns>. Please
 make use of our work, and if you do, please cite as follows:
 
-> <LAST NAME>, <FIRST NAME>. “<PAPER TITLE>”. *<JOURNAL TITLE>*
+> Hashmi, Nabeel. “<PAPER TITLE>”. *<JOURNAL TITLE>*
 > <VOLUME>, no. <NUMBER> (<YEAR>): <PAGES>. doi:
 > <https://dx.doi.org/xxxxxx>.
 
